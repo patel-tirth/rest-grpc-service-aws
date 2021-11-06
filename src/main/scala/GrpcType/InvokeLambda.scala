@@ -7,7 +7,6 @@ import akka.http.scaladsl.model.{HttpEntity, HttpRequest, HttpResponse, Uri}
 
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
 import scala.language.postfixOps
-import scala.util.{Failure, Success}
 import scala.concurrent.{Await, ExecutionContext, Future}
 import com.pateltirth.protos.log.{Request, Response}
 import org.slf4j.{Logger, LoggerFactory}
@@ -24,16 +23,16 @@ val logger: Logger = LoggerFactory.getLogger(this.getClass)
 
   def invokeLam():String = {
     val url = Uri("https://dpyy9anwh4.execute-api.us-east-1.amazonaws.com/test/grpc")
-    val uriWithQuery = url.withQuery(Query("param1" -> "value1"))
-    // get request with time range bucket and key as params
-    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(uri = url))
+//    pass the user provided time and delta as query parameters to api
+    val uriWithQuery = url.withQuery(Query("time" ->time, "delta"->delta))
+    // get request with time and delta as parameters
+    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(uri = uriWithQuery))
   // https://stackoverflow.com/questions/45646602/whats-the-best-practice-to-send-a-simply-http-request-and-get-its-response-with
     val responseBody : Future[String] =
       responseFuture
         .map(_.entity)
         .flatMap(_.toStrict(10 seconds))
         .map(_.data.utf8String)
-
     Await.result(responseBody, 10 seconds)
   }
 
