@@ -6,6 +6,7 @@ import scala.util.{Failure, Success, Try}
 import java.util.Date
 import GrpcType.{ServerGrpc,ClientGrpc}
 import java.text.SimpleDateFormat
+import scala.concurrent.{ExecutionContext, Future}
 object Driver {
   val format = new java.text.SimpleDateFormat("HH:mm:ss.SSS")
 
@@ -24,8 +25,12 @@ object Driver {
         val time = StdIn.readLine()
         println("Please enter a time delta range")
         val delta = StdIn.readLine()
+        logger.info("Trying to start client..")
         val client = new ClientGrpc(time,delta)
-        client.searchLogs()
+        try client.searchLogs()
+          val server = new ServerGrpc(ExecutionContext.global);
+        finally client.shutdown()
+
       } else if (clientType == "rest"){
 
       }
