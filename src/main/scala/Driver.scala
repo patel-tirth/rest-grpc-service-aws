@@ -1,10 +1,13 @@
 import scala.util.Try
 import org.slf4j.{Logger, LoggerFactory}
 import com.typesafe.config.ConfigFactory
+
 import scala.io.StdIn
 import scala.util.{Failure, Success, Try}
 import java.util.Date
-import GrpcType.{ServerGrpc,ClientGrpc}
+import GrpcType.{ClientGrpc, ServerGrpc}
+import RestType.RestApi
+
 import java.text.SimpleDateFormat
 import scala.concurrent.{ExecutionContext, Future}
 object Driver {
@@ -36,7 +39,12 @@ object Driver {
 //        client.shutdown()
 
       } else if (clientType == "rest"){
-
+        println("Please enter a time in format: HH:mm:ss.SSS")
+        val time = StdIn.readLine()
+        println("Please enter a time delta range")
+        val delta = StdIn.readLine()
+        val rest  = new RestApi(time, delta)
+        rest.invokeLambda()
       }
     }
   }

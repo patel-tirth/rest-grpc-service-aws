@@ -26,12 +26,5 @@ import java.util.concurrent.TimeUnit
     val response = blockingStub.checkLogs(request)
 
     logger.info(response.output)
-
-//    if (response.output.toInt == -1){
-//      println("Log messages do not exists for given time and delta")
-//    } else
-//      if(response.output == "Hello from Lambda!"){
-//      println("Log messages exists in the log file!")
-//    }
   }
 }
