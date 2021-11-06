@@ -2,10 +2,8 @@ package GrpcType
 import com.pateltirth.protos.log.LogFinderGrpc
 import com.typesafe.config.ConfigFactory
 import com.pateltirth.protos.log.{Request, Response}
-
 import scala.concurrent.{ExecutionContext, Future}
 import io.grpc.{Server, ServerBuilder}
-import GrpcType.InvokeLambda
 import org.slf4j.{Logger, LoggerFactory}
 // code outline src:  https://github.com/xuwei-k/grpc-scala-sample/blob/master/grpc-scala/src/main/scala/io/grpc/examples/helloworld/HelloWorldServer.scala
 
@@ -30,6 +28,7 @@ class ServerGrpc (executionContext: ExecutionContext){ self =>
       val invokeLambda = new InvokeLambda(req.time, req.delta, req.storage, req.keyname,req)
       val reply = (invokeLambda.invokeLam())
 
+      logger.info("inside checkLogs..returning from lambda")
       Future.successful(Response(output = reply))
     }
   }
