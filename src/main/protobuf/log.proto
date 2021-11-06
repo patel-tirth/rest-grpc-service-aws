@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+// https://scalapb.github.io/docs/grpc
+//package com.pateltirth.protos;
+option java_package = "com.pateltirth.protos";
+
+service LogFinder{
+  rpc checkLogs(Request) returns (Response) ;
+}
+
+message Request{
+  string time = 1;
+  string delta = 2;
+  string storage = 3;  // for lambda and accesing s3 storage
+  string keyname = 4;
+}
+
+message Response{
+  bool output = 1;
+}
