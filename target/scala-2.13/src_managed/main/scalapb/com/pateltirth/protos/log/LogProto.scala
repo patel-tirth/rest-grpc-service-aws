@@ -16,7 +16,7 @@ object LogProto extends _root_.scalapb.GeneratedFileObject {
       scalapb.Encoding.fromBase64(scala.collection.immutable.Seq(
   """Cglsb2cucHJvdG8imgEKB1JlcXVlc3QSHQoEdGltZRgBIAEoCUIJ4j8GEgR0aW1lUgR0aW1lEiAKBWRlbHRhGAIgASgJQgriP
   wcSBWRlbHRhUgVkZWx0YRImCgdzdG9yYWdlGAMgASgJQgziPwkSB3N0b3JhZ2VSB3N0b3JhZ2USJgoHa2V5bmFtZRgEIAEoCUIM4
-  j8JEgdrZXluYW1lUgdrZXluYW1lIi8KCFJlc3BvbnNlEiMKBm91dHB1dBgBIAEoCEIL4j8IEgZvdXRwdXRSBm91dHB1dDItCglMb
+  j8JEgdrZXluYW1lUgdrZXluYW1lIi8KCFJlc3BvbnNlEiMKBm91dHB1dBgBIAEoCUIL4j8IEgZvdXRwdXRSBm91dHB1dDItCglMb
   2dGaW5kZXISIAoJY2hlY2tMb2dzEgguUmVxdWVzdBoJLlJlc3BvbnNlQhcKFWNvbS5wYXRlbHRpcnRoLnByb3Rvc2IGcHJvdG8z"""
       ).mkString)
   lazy val scalaDescriptor: _root_.scalapb.descriptors.FileDescriptor = {

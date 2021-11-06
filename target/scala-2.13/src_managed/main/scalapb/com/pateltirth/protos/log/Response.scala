@@ -7,7 +7,7 @@ package com.pateltirth.protos.log
 
 @SerialVersionUID(0L)
 final case class Response(
-    output: _root_.scala.Boolean = false,
+    output: _root_.scala.Predef.String = "",
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Response] {
     @transient
@@ -17,8 +17,8 @@ final case class Response(
       
       {
         val __value = output
-        if (__value != false) {
-          __size += _root_.com.google.protobuf.CodedOutputStream.computeBoolSize(1, __value)
+        if (!__value.isEmpty) {
+          __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(1, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -35,27 +35,27 @@ final case class Response(
     def writeTo(`_output__`: _root_.com.google.protobuf.CodedOutputStream): _root_.scala.Unit = {
       {
         val __v = output
-        if (__v != false) {
-          _output__.writeBool(1, __v)
+        if (!__v.isEmpty) {
+          _output__.writeString(1, __v)
         }
       };
       unknownFields.writeTo(_output__)
     }
-    def withOutput(__v: _root_.scala.Boolean): Response = copy(output = __v)
+    def withOutput(__v: _root_.scala.Predef.String): Response = copy(output = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
       (__fieldNumber: @_root_.scala.unchecked) match {
         case 1 => {
           val __t = output
-          if (__t != false) __t else null
+          if (__t != "") __t else null
         }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
       _root_.scala.Predef.require(__field.containingMessage eq companion.scalaDescriptor)
       (__field.number: @_root_.scala.unchecked) match {
-        case 1 => _root_.scalapb.descriptors.PBoolean(output)
+        case 1 => _root_.scalapb.descriptors.PString(output)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -66,15 +66,15 @@ final case class Response(
 object Response extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.log.Response] {
   implicit def messageCompanion: scalapb.GeneratedMessageCompanion[com.pateltirth.protos.log.Response] = this
   def parseFrom(`_input__`: _root_.com.google.protobuf.CodedInputStream): com.pateltirth.protos.log.Response = {
-    var __output: _root_.scala.Boolean = false
+    var __output: _root_.scala.Predef.String = ""
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
       val _tag__ = _input__.readTag()
       _tag__ match {
         case 0 => _done__ = true
-        case 8 =>
-          __output = _input__.readBool()
+        case 10 =>
+          __output = _input__.readStringRequireUtf8()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -91,7 +91,7 @@ object Response extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.
     case _root_.scalapb.descriptors.PMessage(__fieldsMap) =>
       _root_.scala.Predef.require(__fieldsMap.keys.forall(_.containingMessage eq scalaDescriptor), "FieldDescriptor does not match message type.")
       com.pateltirth.protos.log.Response(
-        output = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Boolean]).getOrElse(false)
+        output = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -101,14 +101,14 @@ object Response extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.
   lazy val nestedMessagesCompanions: Seq[_root_.scalapb.GeneratedMessageCompanion[_ <: _root_.scalapb.GeneratedMessage]] = Seq.empty
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = com.pateltirth.protos.log.Response(
-    output = false
+    output = ""
   )
   implicit class ResponseLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, com.pateltirth.protos.log.Response]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, com.pateltirth.protos.log.Response](_l) {
-    def output: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Boolean] = field(_.output)((c_, f_) => c_.copy(output = f_))
+    def output: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.output)((c_, f_) => c_.copy(output = f_))
   }
   final val OUTPUT_FIELD_NUMBER = 1
   def of(
-    output: _root_.scala.Boolean
+    output: _root_.scala.Predef.String
   ): _root_.com.pateltirth.protos.log.Response = _root_.com.pateltirth.protos.log.Response(
     output
   )

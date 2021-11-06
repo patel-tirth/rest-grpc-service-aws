@@ -15,6 +15,7 @@ object Driver {
       case Success(testDate) => true
       case Failure(exception) => false
     }
+
   def main(args: Array[String]): Unit = {
     val logger = LoggerFactory.getLogger(this.getClass)
 
@@ -25,11 +26,14 @@ object Driver {
         val time = StdIn.readLine()
         println("Please enter a time delta range")
         val delta = StdIn.readLine()
-        logger.info("Trying to start client..")
+
+
+        val server = new ServerGrpc(ExecutionContext.global)
+        server.start()
         val client = new ClientGrpc(time,delta)
-        try client.searchLogs()
-          val server = new ServerGrpc(ExecutionContext.global);
-        finally client.shutdown()
+        logger.info("Trying to start client..")
+        client.searchLogs()
+//        client.shutdown()
 
       } else if (clientType == "rest"){
 

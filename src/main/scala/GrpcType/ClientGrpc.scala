@@ -10,24 +10,28 @@ import java.util.concurrent.TimeUnit
   val config: Config = ConfigFactory.load()
   val storage: String = config.getString("configuration.storage")
   val host: String = config.getString("configuration.host")
-  val port = "50051"
-  val channel = ManagedChannelBuilder.forAddress(host, port.toInt).usePlaintext().build
+  val port = "3000"
+  val channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build
   val blockingStub = LogFinderGrpc.blockingStub(channel)
     val logger: Logger = LoggerFactory.getLogger(this.getClass)
 
   def shutdown(): Unit = {
     channel.shutdown.awaitTermination(5, TimeUnit.SECONDS)
   }
+
   def searchLogs(): Unit = {
     logger.info("Client connected")
     val request = Request(time, delta, storage, "log")
 
     val response = blockingStub.checkLogs(request)
 
-    if (response.output.toInt == -1){
-      println("Log messages do not exists for given time and delta")
-    } else if(response.output.toInt == 1){
-      println("Log messages exists in the log file!")
-    }
+    logger.info(response.output)
+
+//    if (response.output.toInt == -1){
+//      println("Log messages do not exists for given time and delta")
+//    } else
+//      if(response.output == "Hello from Lambda!"){
+//      println("Log messages exists in the log file!")
+//    }
   }
 }
