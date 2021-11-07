@@ -25,7 +25,7 @@ class ServerGrpc (executionContext: ExecutionContext){ self =>
   private class LogFinderImpl extends LogFinderGrpc.LogFinder {
     override def checkLogs(req: Request):Future[Response] = {
       val logger: Logger = LoggerFactory.getLogger(this.getClass)
-      val invokeLambda = new InvokeLambda(req.time, req.delta, req.storage, req.keyname,req)
+      val invokeLambda = new InvokeLambda(req.time, req.delta)
       val reply = (invokeLambda.invokeLam())
 
       logger.info("inside checkLogs..returning from lambda")

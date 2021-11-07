@@ -9,7 +9,7 @@ import scala.concurrent.{Await, ExecutionContext, Future}
 import com.pateltirth.protos.log.{Request, Response}
 import com.typesafe.config.{Config, ConfigFactory}
 import org.slf4j.{Logger, LoggerFactory}
-class InvokeLambda(val time:String , val delta: String, val storage: String, val keyname: String, req: Request) {
+class InvokeLambda(val time:String , val delta: String) {
   // https://doc.akka.io/docs/akka-grpc/current/server/walkthrough.html#implementing-the-service
   // https://doc.akka.io/docs/akka-http/current/client-side/request-and-response.html
   // https://doc.akka.io/docs/akka-http/current/client-side/request-level.html

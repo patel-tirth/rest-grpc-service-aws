@@ -5,15 +5,10 @@
 
 package com.pateltirth.protos.log
 
-/** @param storage
-  *   for lambda and accesing s3 storage
-  */
 @SerialVersionUID(0L)
 final case class Request(
     time: _root_.scala.Predef.String = "",
     delta: _root_.scala.Predef.String = "",
-    storage: _root_.scala.Predef.String = "",
-    keyname: _root_.scala.Predef.String = "",
     unknownFields: _root_.scalapb.UnknownFieldSet = _root_.scalapb.UnknownFieldSet.empty
     ) extends scalapb.GeneratedMessage with scalapb.lenses.Updatable[Request] {
     @transient
@@ -32,20 +27,6 @@ final case class Request(
         val __value = delta
         if (!__value.isEmpty) {
           __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(2, __value)
-        }
-      };
-      
-      {
-        val __value = storage
-        if (!__value.isEmpty) {
-          __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(3, __value)
-        }
-      };
-      
-      {
-        val __value = keyname
-        if (!__value.isEmpty) {
-          __size += _root_.com.google.protobuf.CodedOutputStream.computeStringSize(4, __value)
         }
       };
       __size += unknownFields.serializedSize
@@ -72,24 +53,10 @@ final case class Request(
           _output__.writeString(2, __v)
         }
       };
-      {
-        val __v = storage
-        if (!__v.isEmpty) {
-          _output__.writeString(3, __v)
-        }
-      };
-      {
-        val __v = keyname
-        if (!__v.isEmpty) {
-          _output__.writeString(4, __v)
-        }
-      };
       unknownFields.writeTo(_output__)
     }
     def withTime(__v: _root_.scala.Predef.String): Request = copy(time = __v)
     def withDelta(__v: _root_.scala.Predef.String): Request = copy(delta = __v)
-    def withStorage(__v: _root_.scala.Predef.String): Request = copy(storage = __v)
-    def withKeyname(__v: _root_.scala.Predef.String): Request = copy(keyname = __v)
     def withUnknownFields(__v: _root_.scalapb.UnknownFieldSet) = copy(unknownFields = __v)
     def discardUnknownFields = copy(unknownFields = _root_.scalapb.UnknownFieldSet.empty)
     def getFieldByNumber(__fieldNumber: _root_.scala.Int): _root_.scala.Any = {
@@ -102,14 +69,6 @@ final case class Request(
           val __t = delta
           if (__t != "") __t else null
         }
-        case 3 => {
-          val __t = storage
-          if (__t != "") __t else null
-        }
-        case 4 => {
-          val __t = keyname
-          if (__t != "") __t else null
-        }
       }
     }
     def getField(__field: _root_.scalapb.descriptors.FieldDescriptor): _root_.scalapb.descriptors.PValue = {
@@ -117,8 +76,6 @@ final case class Request(
       (__field.number: @_root_.scala.unchecked) match {
         case 1 => _root_.scalapb.descriptors.PString(time)
         case 2 => _root_.scalapb.descriptors.PString(delta)
-        case 3 => _root_.scalapb.descriptors.PString(storage)
-        case 4 => _root_.scalapb.descriptors.PString(keyname)
       }
     }
     def toProtoString: _root_.scala.Predef.String = _root_.scalapb.TextFormat.printToUnicodeString(this)
@@ -131,8 +88,6 @@ object Request extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.l
   def parseFrom(`_input__`: _root_.com.google.protobuf.CodedInputStream): com.pateltirth.protos.log.Request = {
     var __time: _root_.scala.Predef.String = ""
     var __delta: _root_.scala.Predef.String = ""
-    var __storage: _root_.scala.Predef.String = ""
-    var __keyname: _root_.scala.Predef.String = ""
     var `_unknownFields__`: _root_.scalapb.UnknownFieldSet.Builder = null
     var _done__ = false
     while (!_done__) {
@@ -143,10 +98,6 @@ object Request extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.l
           __time = _input__.readStringRequireUtf8()
         case 18 =>
           __delta = _input__.readStringRequireUtf8()
-        case 26 =>
-          __storage = _input__.readStringRequireUtf8()
-        case 34 =>
-          __keyname = _input__.readStringRequireUtf8()
         case tag =>
           if (_unknownFields__ == null) {
             _unknownFields__ = new _root_.scalapb.UnknownFieldSet.Builder()
@@ -157,8 +108,6 @@ object Request extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.l
     com.pateltirth.protos.log.Request(
         time = __time,
         delta = __delta,
-        storage = __storage,
-        keyname = __keyname,
         unknownFields = if (_unknownFields__ == null) _root_.scalapb.UnknownFieldSet.empty else _unknownFields__.result()
     )
   }
@@ -167,9 +116,7 @@ object Request extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.l
       _root_.scala.Predef.require(__fieldsMap.keys.forall(_.containingMessage eq scalaDescriptor), "FieldDescriptor does not match message type.")
       com.pateltirth.protos.log.Request(
         time = __fieldsMap.get(scalaDescriptor.findFieldByNumber(1).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        delta = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        storage = __fieldsMap.get(scalaDescriptor.findFieldByNumber(3).get).map(_.as[_root_.scala.Predef.String]).getOrElse(""),
-        keyname = __fieldsMap.get(scalaDescriptor.findFieldByNumber(4).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
+        delta = __fieldsMap.get(scalaDescriptor.findFieldByNumber(2).get).map(_.as[_root_.scala.Predef.String]).getOrElse("")
       )
     case _ => throw new RuntimeException("Expected PMessage")
   }
@@ -180,30 +127,20 @@ object Request extends scalapb.GeneratedMessageCompanion[com.pateltirth.protos.l
   def enumCompanionForFieldNumber(__fieldNumber: _root_.scala.Int): _root_.scalapb.GeneratedEnumCompanion[_] = throw new MatchError(__fieldNumber)
   lazy val defaultInstance = com.pateltirth.protos.log.Request(
     time = "",
-    delta = "",
-    storage = "",
-    keyname = ""
+    delta = ""
   )
   implicit class RequestLens[UpperPB](_l: _root_.scalapb.lenses.Lens[UpperPB, com.pateltirth.protos.log.Request]) extends _root_.scalapb.lenses.ObjectLens[UpperPB, com.pateltirth.protos.log.Request](_l) {
     def time: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.time)((c_, f_) => c_.copy(time = f_))
     def delta: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.delta)((c_, f_) => c_.copy(delta = f_))
-    def storage: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.storage)((c_, f_) => c_.copy(storage = f_))
-    def keyname: _root_.scalapb.lenses.Lens[UpperPB, _root_.scala.Predef.String] = field(_.keyname)((c_, f_) => c_.copy(keyname = f_))
   }
   final val TIME_FIELD_NUMBER = 1
   final val DELTA_FIELD_NUMBER = 2
-  final val STORAGE_FIELD_NUMBER = 3
-  final val KEYNAME_FIELD_NUMBER = 4
   def of(
     time: _root_.scala.Predef.String,
-    delta: _root_.scala.Predef.String,
-    storage: _root_.scala.Predef.String,
-    keyname: _root_.scala.Predef.String
+    delta: _root_.scala.Predef.String
   ): _root_.com.pateltirth.protos.log.Request = _root_.com.pateltirth.protos.log.Request(
     time,
-    delta,
-    storage,
-    keyname
+    delta
   )
   // @@protoc_insertion_point(GeneratedMessageCompanion[Request])
 }

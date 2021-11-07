@@ -1,15 +1,14 @@
 import scala.util.Try
 import org.slf4j.{Logger, LoggerFactory}
 import com.typesafe.config.ConfigFactory
-
 import scala.io.StdIn
 import scala.util.{Failure, Success, Try}
 import java.util.Date
 import GrpcType.{ClientGrpc, ServerGrpc}
 import RestType.RestApi
-
 import java.text.SimpleDateFormat
 import scala.concurrent.{ExecutionContext, Future}
+
 object Driver {
   val format = new java.text.SimpleDateFormat("HH:mm:ss.SSS")
 

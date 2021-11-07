@@ -11,8 +11,6 @@ service LogFinder{
 message Request{
   string time = 1;
   string delta = 2;
-  string storage = 3;  // for lambda and accesing s3 storage
-  string keyname = 4;
 }
 
 message Response{

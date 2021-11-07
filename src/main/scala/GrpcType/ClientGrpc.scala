@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 
   def searchLogs(): Unit = {
     logger.info("Client connected")
-    val request = Request(time, delta, storage, "log")
+    val request = Request(time, delta)
 
     val response = blockingStub.checkLogs(request)
 
