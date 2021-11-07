@@ -1,5 +1,6 @@
 # rest-grpc-service-aws
 #### Tirth Patel
+[Video demonstration](https://youtu.be/O937OXVglkA)
 
 ### Designing and implementing a RESTful service and a lambda function that are accessed from clients using gRPC.
 
