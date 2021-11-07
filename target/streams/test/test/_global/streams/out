@@ -1,0 +1,15 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(scalaTest, org.scalatest.tools.Framework$$anon$1@1105a67c, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mscalaTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mconfig params[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should check the storage bucket in[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should check the rest api url[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should check the grpc api url[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should check the local host[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should check the pattern[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 611 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 5[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 5, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scalaTest[0m
