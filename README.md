@@ -28,6 +28,27 @@ https://github.com/xuwei-k/grpc-scala-sample/tree/master/grpc-scala/src/main/sca
 
 https://doc.akka.io/docs/akka-http/current/client-side/request-level.html#future-based-variant
 
+### Code documentation 
+
+1) ```src/main/protobuf/log.proto```
+-> This is the scalapb proto buf file. Protocol format is defined in this file. This is converted to scala case classses on compilation.
+
+2) ```src/main/GrpcType/ClientGrpc.scala ```
+-> This class calls the ServerGrpc.scala class which in turn calls the InvokeLambda.scala to invoke the lambda function on aws. 
+
+3) ```src/main/GrpcType/ServerGrpc.scala ```
+-> This is the sever program and the ``` checkLogs``` method invokes the lambda function. 
+
+4) ```src/main/GrpcType/InvokeLambda.scala ```
+-> This class uses AKKA actor system and Request-Level Client-Side API's Future based variant to invoke the lambda function. The URI for api gateway is specified in configuration file as ``` apigatewaygrpc ```
+
+5) ```src/main/RestType/RestApi.scala ```
+-> This class directly invokes the API gateway using REST method using the AKKA actor system and Request-Level Client-Side API's Future based variant.
+
+
+#### To run the code on your aws account:
+#### Follow the steps in the video and specify s3 bucket storage name, api endpoints, pattern in configuration file. 
+
 ## Functionality
 Your homework assignment consists of two interlocked parts: first, create a client program that uses gRPC to invoke a lambda function deployed on AWS to determine if the desired timestamp is in the log file and second, to  a client program and the corresponding lambda function that use the REST methods (e.g., GET or POST) to interact. While you are free to determine how your lambda function works, there is a small subset of mandatory functionality that you must implement: given the input of time stamp and time interval determine if the log files in some bucket that are being constantly updated with new log messages contain messages in the given time interval from the designated input time stamp and to return a MD5-generated hash code from these messages or some 400-level HTTP client response to designate that log files do not contain any messages in the given time interval.
 
